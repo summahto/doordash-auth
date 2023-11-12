@@ -55,4 +55,25 @@ When working with a Spring Boot project using Gradle, you can use the following 
 
    This skips the test execution during the build.
 
+9. In Gradle, dependencies are declared in the build.gradle file for your project. You can specify dependencies for your project by adding the necessary configuration in the dependencies block. Here's a basic example of how you can add dependencies to a Gradle project:
+
+// build.gradle
+
+plugins {
+    id 'java'
+}
+
+repositories {
+    // You can add additional repositories here
+    jcenter()
+}
+
+dependencies {
+    // Add dependencies for your project here
+    implementation 'group:artifact:version'
+    // Example:
+    // implementation 'com.google.guava:guava:30.1-jre'
+}
+
+
 These commands assume that you have a standard Spring Boot project structure and have applied the Spring Boot Gradle plugin in your `build.gradle` file. Customize your `build.gradle` as needed based on your project's requirements.
