@@ -17,6 +17,20 @@ import java.util.Map;
 @SpringBootApplication
 public class DoordashApiApplication {
 
+	/**
+	 * shoppingLists
+	 * Holds the data for this shopping list application
+	 * 
+	 * shoppingLists : {
+		* "User1": {
+		* 		"List1": ["Item1", "Item2", "Item3"],
+		* 		"List2": ["Item1", "Item2", "Item3"]
+		* 		},
+		* "User2": {
+		* 		"List1": ["Item1", "Item2", "Item3"]
+		* 		}
+	 * }
+	 */
 	private Map<String, Map<String, List<String>>> shoppingLists = new HashMap();
 
 	/**
