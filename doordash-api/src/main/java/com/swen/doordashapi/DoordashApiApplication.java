@@ -95,7 +95,6 @@ public class DoordashApiApplication {
 	@DeleteMapping("/{user}/finish/{list}")
 	public void finishShoppingList(@PathVariable String user, @PathVariable String list) {
 		shoppingLists.get(user).get(list).clear();
-		//TODO: Tell the customer that a list is furfilled
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(DoordashApiApplication.class, args);
