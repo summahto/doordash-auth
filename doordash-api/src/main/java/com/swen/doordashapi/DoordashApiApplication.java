@@ -19,30 +19,65 @@ public class DoordashApiApplication {
 
 	private Map<String, Map<String, List<String>>> shoppingLists = new HashMap();
 
+	/**
+	 * Adds an item to a shopping list
+	 * @param user The name of the user who made the list
+	 * @param list The name of the list that is getting addded to
+	 * @param item The item that is getting added to the list
+	 */
 	@PostMapping("/{user}/add/{list}/{item}")
 	public void addItemToShoppingList(@PathVariable String user, @PathVariable String list, @PathVariable String item) {
 		shoppingLists.get(user).get(list).add(item);
 	}
+	/**
+	 * Adds a new shopping list
+	 * @param user The name of the user who made the list
+	 * @param list The name of the new list
+	 */
 	@PostMapping("/{user}/add/{list}")
 	public void addShoppingList(@PathVariable String user, @PathVariable String list) {
 		shoppingLists.get(user).put(list, new ArrayList<String>());
 	}
+	/**
+	 * Adds a new user
+	 * @param user The name of the new user
+	 */
 	@PostMapping("/addUser/{user}")
 	public void addUser(@PathVariable String user) {
 		shoppingLists.put(user, new HashMap<>());
 	}
+	/**
+	 * Gets all a single specifyed shopping list
+	 * @param user The name of the user whos list we are retriving
+	 * @param list The name of the list that is being retrived
+	 * @return
+	 */
 	@GetMapping("/{user}/get/{list}")
 	public List<String> getShoppingList(@PathVariable String user, @PathVariable String list) {
 		return shoppingLists.get(user).get(list);
 	}
+	/**
+	 * Gets all shopping lists of a specifyed users
+	 * @param user The name of the user whos lists are being retrived
+	 * @return
+	 */
 	@GetMapping("/{user}/get")
 	public Map<String, List<String>> getAllUserShoppingLists(@PathVariable String user) {
 		return shoppingLists.get(user);
 	}
+	/**
+	 * Gets all shopping lists
+	 * @return
+	 */
 	@GetMapping("/getAll")
 	public Map<String, Map<String, List<String>>> getAllShoppingLists() {
 		return shoppingLists;
 	}
+	/**
+	 * Deletes a furfiled shoping list
+	 * @param user The name of the user whoes list is done
+	 * @param list The name of the list that is done
+	 */
 	@DeleteMapping("/{user}/finish/{list}")
 	public void finishShoppingList(@PathVariable String user, @PathVariable String list) {
 		shoppingLists.get(user).get(list).clear();
