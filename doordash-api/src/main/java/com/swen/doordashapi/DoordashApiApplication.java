@@ -67,8 +67,8 @@ public class DoordashApiApplication {
 	 * @return
 	 */
 	@GetMapping("/{user}/get/{list}")
-	public List<String> getShoppingList(@PathVariable String user, @PathVariable String list) {
-		return shoppingLists.get(user).get(list);
+	public String getShoppingList(@PathVariable String user, @PathVariable String list) {
+		return shoppingLists.get(user).get(list).toString();
 	}
 	/**
 	 * Gets all shopping lists of a specifyed users
@@ -76,8 +76,9 @@ public class DoordashApiApplication {
 	 * @return
 	 */
 	@GetMapping("/{user}/get")
-	public Map<String, List<String>> getAllUserShoppingLists(@PathVariable String user) {
-		return shoppingLists.get(user);
+	public String getAllUserShoppingLists(@PathVariable String user) {
+		// return shoppingLists.get(user);
+		return shoppingLists.get(user).values().toString();
 	}
 	/**
 	 * Gets all shopping lists
@@ -98,6 +99,14 @@ public class DoordashApiApplication {
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(DoordashApiApplication.class, args);
+	}
+
+	public String toString(List<String> list) {
+		String ret = "";
+		for (String item : list) {
+			ret += item + "\n";
+		}
+		return ret;
 	}
 
 }
