@@ -24,21 +24,11 @@ public class User {
      */
     public User() {}
 
-    // /**
-    //  * Might not be used but this will allow us to preload data into the system
-    //  * 
-    //  * TODO: look into how to get this to put this into the db
-    //  * @param id
-    //  * @param name
-    //  * @param password
-    //  * @param token
-    //  * @param type
-    //  */
-    // public User(Long id, String name, String password, String token, UserTypes type) {
-    //     this.id = id;
-    //     this.name = name;
-    //     this.password = password;
-    //     this.token = token;
-    //     this.type = type;
-    // }
+    public User(Long id, String name, String password, String token, UserTypes type) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.token = token;
+        this.type = type;
+    }
 }
