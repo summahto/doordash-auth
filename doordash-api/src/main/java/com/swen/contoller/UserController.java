@@ -1,4 +1,4 @@
-package com.swen.doordashapi;
+package com.swen.contoller;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootApplication
-public class DoordashApiApplication {
+public class UserController {
 
 	/**
 	 * shoppingLists
@@ -97,7 +97,7 @@ public class DoordashApiApplication {
 		shoppingLists.get(user).get(list).clear();
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(DoordashApiApplication.class, args);
+		SpringApplication.run(UserController.class, args);
 	}
 
 }
