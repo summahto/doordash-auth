@@ -35,26 +35,25 @@ public class UserController {
 		return userService.findAll();
 	}
 
-	@GetMapping("/{id}")
-	public Optional<User> findById (@PathVariable Long id) {
+	@GetMapping("/users/{id}")
+	public Optional<User> findById(@PathVariable Long id) {
 		return userService.findById(id);
 	}
-	
-	@GetMapping("/{name}")
+
+	@GetMapping("/users/{name}")
 	public Optional<User> findByName(@PathVariable String name) {
 		return userService.findByName(name);
 	}
 
 	@ResponseStatus(HttpStatus.CREATED) // 201
-	@PostMapping
+	@PostMapping("/users")
 	public User create(@RequestBody User user) {
 		return userService.save(user);
 	}
 
-	@PutMapping
+	@PutMapping("/users")
 	public User update(@RequestBody User user) {
 		return userService.save(user);
 	}
 
-	
 }

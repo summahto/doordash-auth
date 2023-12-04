@@ -4,12 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
 
 import org.springframework.stereotype.Indexed;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +24,8 @@ public class User {
     /**
      * Defualt contructor used by JPA (not called by our code)
      */
-    public User() {}
+    public User() {
+    }
 
     public User(Long id, String name, String password, String token, UserTypes type) {
         this.id = id;
