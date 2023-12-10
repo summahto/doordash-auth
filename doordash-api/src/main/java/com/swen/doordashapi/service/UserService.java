@@ -37,17 +37,30 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Session login(LoginRequest loginRequest) {
-        User user = userRepository.login(loginRequest.getName(), loginRequest.getPassword(), loginRequest.getType().ordinal());
-        Session session = new Session(user.getID());
-        return sessionRepository.save(session);
+    public Session login(String name, String password) {
+        User user = userRepository.findByCredentials(name, password);
+
+        if (user != null) {
+            // Create a new session and associate it with the user
+            Session session = new Session(user.getId());
+            return sessionRepository.save(session);
+        } else {
+            throw new RuntimeException("Invalid credentials");
+        }
     }
+
+
+//    public Session login(LoginRequest loginRequest) {
+//        User user = userRepository.login(loginRequest.getName(), loginRequest.getPassword(), loginRequest.getType().ordinal());
+//        Session session = new Session(user.getID());
+//        return sessionRepository.save(session);
+//    }
 
     public void logout(Session session) {
         sessionRepository.delete(session);
     }
 
-    public Optional<Session> findSession(Long sessionID) {
+    public Optional<Session> findSession(String sessionID) {
         return sessionRepository.findById(sessionID);
     }
 

@@ -1,10 +1,6 @@
 package com.swen.doordashapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
@@ -18,7 +14,12 @@ public class User {
     private Long id;
     private String name;
     private String password;
+
+    @Enumerated(EnumType.STRING)
     private UserTypes type;
+
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    private Session session;
 
     /**
      * Defualt contructor used by JPA (not called by our code)
@@ -26,13 +27,16 @@ public class User {
     public User() {
     }
 
-    // public User(Long id, String name, String password, String token, UserTypes type) {
-    //     this.id = id;
-    //     this.name = name;
-    //     this.password = password;
-    //     this.token = token;
-    //     this.type = type;
-    // }
+     public User(Long id, String name, String password, UserTypes type) {
+         this.id = id;
+         this.name = name;
+         this.password = password;
+         this.type = type;
+     }
+
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -46,8 +50,5 @@ public class User {
         return type;
     }
 
-    public Long getID() {
-        return id;
-    }
     
 }
