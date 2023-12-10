@@ -18,7 +18,6 @@ public class User {
     private Long id;
     private String name;
     private String password;
-    private String token;
     private UserTypes type;
 
     /**
@@ -27,11 +26,28 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String password, String token, UserTypes type) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.token = token;
-        this.type = type;
+    // public User(Long id, String name, String password, String token, UserTypes type) {
+    //     this.id = id;
+    //     this.name = name;
+    //     this.password = password;
+    //     this.token = token;
+    //     this.type = type;
+    // }
+
+    public String getName() {
+        return name;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public UserTypes getType() {
+        return type;
+    }
+
+    public Long getID() {
+        return id;
+    }
+    
 }

@@ -18,4 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User save(User user);
 
     List<User> findAll();
+
+    @Query("SELECT b FROM User b WHERE b.name = :name AND b.password = :password AND b.type = :type")
+    User login(@Param("name") String name, @Param("password") String password, @Param("type") int type);
 }

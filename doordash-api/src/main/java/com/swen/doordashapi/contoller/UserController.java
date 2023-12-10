@@ -29,7 +29,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	/* likely not neccissary */
+	/* likely not necessary */
 	@GetMapping
 	public List<User> findAll() {
 		return userService.findAll();
@@ -54,6 +54,20 @@ public class UserController {
 	@PutMapping("/users")
 	public User update(@RequestBody User user) {
 		return userService.save(user);
+	}
+
+	@PutMapping("/users/login")
+	public Long login(@RequestBody User user) {
+		//TODO: process PUT request
+		
+		return userService.login(user.);
+	}
+
+	@PutMapping("/users/logout/{id}")
+	public User logout(@PathVariable String id) {
+		//TODO: process PUT request
+		
+		return entity;
 	}
 
 }

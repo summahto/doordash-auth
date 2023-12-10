@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.swen.doordashapi.model.LoginRequest;
+import com.swen.doordashapi.model.Session;
 import com.swen.doordashapi.model.User;
+import com.swen.doordashapi.repository.SessionRepository;
 import com.swen.doordashapi.repository.UserRepository;
 
 @Service
@@ -15,6 +18,8 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    SessionRepository sessionRepository;
 
     public List<User> findAll() {
         return userRepository.findAll();
@@ -30,6 +35,20 @@ public class UserService {
 
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    public Session login(LoginRequest loginRequest) {
+        User user = userRepository.login(loginRequest.getName(), loginRequest.getPassword(), loginRequest.getType().ordinal());
+        Session session = new Session(user.getID());
+        return sessionRepository.save(session);
+    }
+
+    public void logout(Session session) {
+        sessionRepository.delete(session);
+    }
+
+    public Optional<Session> findSession(Long sessionID) {
+        return sessionRepository.findById(sessionID);
     }
 
 }
