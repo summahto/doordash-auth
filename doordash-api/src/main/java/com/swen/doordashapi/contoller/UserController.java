@@ -81,6 +81,7 @@ public class UserController {
 	public ResponseEntity<Session> login(@RequestBody LoginRequest loginRequest) {
 		try {
 			Session session = userService.login(loginRequest.getName(), loginRequest.getPassword());
+			LOG.info(session.getSessionID());
 			return new ResponseEntity<>(session, HttpStatus.OK);
 		} catch (RuntimeException e) {
 			e.printStackTrace();

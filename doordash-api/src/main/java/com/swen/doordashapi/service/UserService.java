@@ -49,13 +49,6 @@ public class UserService {
         }
     }
 
-
-//    public Session login(LoginRequest loginRequest) {
-//        User user = userRepository.login(loginRequest.getName(), loginRequest.getPassword(), loginRequest.getType().ordinal());
-//        Session session = new Session(user.getID());
-//        return sessionRepository.save(session);
-//    }
-
     public void logout(Session session) {
         sessionRepository.delete(session);
     }

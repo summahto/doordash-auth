@@ -21,5 +21,11 @@ public class Session {
         this.user_id = user_id;
     }
 
+    public String getSessionID() {
+        return sessionID;
+    }
 
+    public Long getUser_id() {
+        return user_id;
+    }
 }
