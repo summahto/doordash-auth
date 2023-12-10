@@ -1,6 +1,6 @@
 package com.swen.doordashapi.model;
 
-public enum UserTypes {
+public enum Role {
     ADMIN,
     AUTHORISED,
     AUTHENTICATED
