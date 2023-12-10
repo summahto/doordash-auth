@@ -1,2 +1,20 @@
-package com.swen.doordashapi.contoller;public class RegisterRequest {
+package com.swen.doordashapi.contoller;
+
+import com.swen.doordashapi.model.Role;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class RegisterRequest {
+
+    private String username;
+    private String password;
+    private Role role;
+
 }
