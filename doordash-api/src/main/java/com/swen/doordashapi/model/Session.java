@@ -1,6 +1,5 @@
 package com.swen.doordashapi.model;
 
-import java.util.Random;
 
 import jakarta.persistence.*;
 
